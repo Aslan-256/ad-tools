@@ -1,0 +1,36 @@
+services:
+  app:
+    build: .
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    environment:
+      - PORT=3001
+      - DB_HOST=postgres
+      - DB_NAME=farm
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - DB_DIALECT=postgres
+      - TEAM_TOKEN=${TEAM_TOKEN:-c1068c11deab20a5edc69aeb9c0791e1} ##update ogni volta, deve essere uguale a quello di TEAM_TOKEN
+      - FLAG_SUBMIT_URL=${FLAG_SUBMIT_URL:-http://10.10.0.1:8080/flags} #update ogni volta, deve essere uguale a quello di FLAG_SUBMIT_URL
+      - FLAG_IDS_BASE_URL=${FLAG_IDS_BASE_URL:-http://10.10.0.1:8081} #update ogni volta, deve essere uguale a quello di FLAG_IDS_BASE_URL
+      - FLAG_SUBMIT_TIMEOUT_MS=${FLAG_SUBMIT_TIMEOUT_MS:-5000}
+      - FLAG_SUBMIT_SPACING_MS=${FLAG_SUBMIT_SPACING_MS:-2200}
+      - FLAG_SUBMIT_BATCH_SIZE=${FLAG_SUBMIT_BATCH_SIZE:-250}
+    volumes:
+      - ./game:/usr/src/app/game
+    ports:
+      - '3001:3001' #3001 perche' su 3000 c'e' tulip
+
+  postgres:
+    image: postgres:12
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=farm
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:

@@ -1,0 +1,29 @@
+services:
+    firewall:
+        restart: unless-stopped
+        container_name: firegex
+        build: .
+        network_mode: host
+        environment:
+            - PORT=4444
+            - HOST=any
+            - NTHREADS=8
+        volumes:
+            - firegex_data:/execute/db
+            - type: bind
+              source: /proc/sys/net/ipv4/conf/all/route_localnet
+              target: /sys_host/net.ipv4.conf.all.route_localnet
+            - type: bind
+              source: /proc/sys/net/ipv4/ip_forward
+              target: /sys_host/net.ipv4.ip_forward
+            - type: bind
+              source: /proc/sys/net/ipv4/conf/all/forwarding
+              target: /sys_host/net.ipv4.conf.all.forwarding
+            - type: bind
+              source: /proc/sys/net/ipv6/conf/all/forwarding
+              target: /sys_host/net.ipv6.conf.all.forwarding
+        cap_add:
+            - NET_ADMIN
+            - SYS_NICE
+volumes:
+    firegex_data: 
