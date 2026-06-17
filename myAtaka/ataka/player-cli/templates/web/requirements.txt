@@ -1,0 +1,4 @@
+pwntools
+cryptography
+beautifulsoup4
+requests
