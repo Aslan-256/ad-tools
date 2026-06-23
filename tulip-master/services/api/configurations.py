@@ -31,12 +31,16 @@ tick_length = os.getenv("TICK_LENGTH", 2*60*1000)
 flag_lifetime = os.getenv("FLAG_LIFETIME", 5)
 start_date = os.getenv("TICK_START", "2018-06-27T13:00:00+02:00")
 flag_regex = os.getenv("FLAG_REGEX", "[A-Z0-9]{31}=")
-vm_ip = os.getenv("VM_IP", "10.60.9.1")
+vm_ip = os.getenv("VM_IP", "10.60.5.1")
 visualizer_url = os.getenv("VISUALIZER_URL", "http://127.0.0.1:1337")
 
 services = [
-	{"ip": vm_ip, "port": 80, "name": "capp"},
-	{"ip": vm_ip, "port": 5000, "name": "polls"},
-	{"ip": vm_ip, "port": 5555, "name": "manager"},
-	{"ip": vm_ip, "port": 1337, "name": "ticket"}
+	{"ip": vm_ip, "port": 8000, "name": "exxcel"},
+{"ip": vm_ip, "port": 80, "name": "exxcel80"},
+	{"ip": vm_ip, "port": 2222, "name": "cookingnonna"},
+	{"ip": vm_ip, "port": 3000, "name": "ccforms"},
+	{"ip": vm_ip, "port": 8442, "name": "ccalendar"},
+{"ip": vm_ip, "port": 443, "name": "ccalendar443"},
+  {"ip": vm_ip, "port": 1337, "name": "exxcelBackend"},
+{"ip": vm_ip, "port": 3001, "name": "ccformsBackend"}
 ]
