@@ -11,7 +11,7 @@ services:
       - DB_USER=postgres
       - DB_PASS=postgres
       - DB_DIALECT=postgres
-      - TEAM_TOKEN=${TEAM_TOKEN:-c1068c11deab20a5edc69aeb9c0791e1} ##update ogni volta, deve essere uguale a quello di TEAM_TOKEN
+      - TEAM_TOKEN=${TEAM_TOKEN:-728fcfe9e2eb1c493899adac2be82328} ##update ogni volta, deve essere uguale a quello di TEAM_TOKEN
       - FLAG_SUBMIT_URL=${FLAG_SUBMIT_URL:-http://10.10.0.1:8080/flags} #update ogni volta, deve essere uguale a quello di FLAG_SUBMIT_URL
       - FLAG_IDS_BASE_URL=${FLAG_IDS_BASE_URL:-http://10.10.0.1:8081} #update ogni volta, deve essere uguale a quello di FLAG_IDS_BASE_URL
       - FLAG_SUBMIT_TIMEOUT_MS=${FLAG_SUBMIT_TIMEOUT_MS:-5000}
