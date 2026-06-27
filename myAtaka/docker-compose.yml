@@ -28,7 +28,7 @@ services:
     shm_size: 1g
     hostname: ataka-postgres
     ports:
-      - "127.0.0.1:5432:5432"
+      - "0.0.0.0:5432:5432"
     networks:
       - ataka
     environment:
@@ -60,7 +60,7 @@ services:
       - ${DATA_STORE}/shared:/data/shared:rw,z
       - ${DATA_STORE}/exploits:/data/exploits:rw,z
     ports:
-      - "127.0.0.1:8000:8000"
+      - "0.0.0.0:8000:8000"
     security_opt:
       - label:disable
     depends_on:

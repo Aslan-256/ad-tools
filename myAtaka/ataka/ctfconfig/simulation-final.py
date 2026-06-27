@@ -8,7 +8,7 @@ from ataka.common.flag_status import FlagStatus
 ### EXPORTED CONFIG
 
 # Ataka Host Domain / IP    
-ATAKA_HOST = "178.105.216.213:8000"
+ATAKA_HOST = "127.0.0.1:8000"
 
 # Default targets for atk runlocal
 RUNLOCAL_TARGETS = [
@@ -18,7 +18,7 @@ RUNLOCAL_TARGETS = [
 
 # Default targets for atk runremote
 STATIC_EXCLUSIONS = {
-    "10.60.24.1", #TODO: Set our ip here
+    "10.60.5.1", #TODO: Set our ip here
 }
 
 ROUND_TIME = 120
@@ -30,12 +30,12 @@ FLAG_BATCHSIZE = 200 # Maximum list length for submit_flags()
 
 FLAG_RATELIMIT = 2 # Minimum wait in seconds between each call of submit_flags()
 
-START_TIME = 1781945960 # First time -> When the CTF starts, set to 1 minute in the future for testing
+START_TIME = 1781942100 # First time -> When the CTF starts, set to 1 minute in the future for testing
 
 #START_TIME = 1778241600 # Second time 
 ### END EXPORTED CONFIG
 
-TEAM_TOKEN = "ebd7f8646452d80c"
+TEAM_TOKEN = "728fcfe9e2eb1c493899adac2be82328"
 
 SUBMIT_URL = "http://10.10.0.1:8080/flags"
 FLAGID_URL = "http://10.10.0.1:8081/flagIds"
@@ -57,8 +57,8 @@ def _fetch_service():
         response = requests.get(SERVICE_URL, timeout=5)
         data = response.json()
         services = {}
-        for service_name in data.get("services", []):
-            services[service_name] = service_name
+        for service in data.get("services", []):
+            services[service['shortname']] = service['shortname']
         print(f"Fetched {len(services)} services: {services}")
         return services
     except Exception as e:
